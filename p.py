@@ -26,8 +26,8 @@ for i in range(n):
 	Creating the final video File
 '''
 
-n = glob.glob('./op/*.jpg')
-img = n
+n = len(os.listdir('./op'))
+img = [f'{i}.jpg' for i in range(n)]
 clips = [ImageClip(m).set_duration(0.1) for m in img]
 
 vidclip = VideoFileClip('in-10.mp4')

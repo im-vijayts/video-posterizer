@@ -5,12 +5,30 @@ import os
 import cv2 
 import p
 import ffmpeg
+import subprocess
+
+'''
+    Enter the name of the input file here
+'''
+
+inp_file = 'in.mp4'
+out_file = 'out.mp4'
+
+
+
+
+
 
 '''
     Getting each frame of the input video and saving it to a folder called 'frames'
 '''
 
-os.popen('ffmpeg -i in.mp4 -r 10 -y in-10.mp4')
+required_directories = ['./frames', './op']
+for reqdir in required_directories:
+    if not os.path.exists(reqdir):
+        os.mkdir(reqdir)
+
+subprocess.call(f'ffmpeg -i {inp_file} -r 10 -y in-10.mp4', shell=True)
 
 input_file_name = os.getcwd() + '\\in-10.mp4'
 
@@ -25,7 +43,8 @@ def FrameCapture(path):
 try:
     FrameCapture(input_file_name)
 except:
-    print(' oh no something went wrong ')
+    print(' ignore this idk why ')
 finally:
     p.imageposterizer()
-    p.createPosterizedVideo()
+    p.createPosterizedVideo(out_file)
+    p.deleteFiles()

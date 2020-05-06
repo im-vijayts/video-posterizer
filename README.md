@@ -10,7 +10,7 @@ Rejoins the frames into a video with the audio synchronised (using moviepy).
 
 # The parameters you need to provide
 
-##Main file is GetFrames.py
+## Main file is GetFrames.py
 
 You are required to provide the following arguements:
   * inp_file (defaults to 'in.mp4') - The name of file
